@@ -10,24 +10,23 @@ type AssetFile = { name: string, url: string }
 
 export class Assets extends PIXI.Loader {
 
-    // private game: Game
     private assets: AssetFile[] = []
 
     constructor(game: Game) {
         super()
-        // this.game = game
 
         this.assets = [
-            { name: "Full_animationJson", url: "Full_animation.json" },
+            // Add assets
         ]
 
         this.assets.forEach(asset => {
-            this.add(asset.name, asset.url)
+            // Add to loader
         })
 
         this.onError.add((arg) => { console.error(arg) })
         this.onProgress.add((loader) => this.showProgress(loader))
-        this.load(() => game.loadCompleted())
+        // call load and point to callback
+
     }
 
     private showProgress(loader) {

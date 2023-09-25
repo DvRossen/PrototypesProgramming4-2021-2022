@@ -2,30 +2,7 @@ PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
 import * as PIXI from 'pixi.js'
 import { Game } from './game'
 
-// export let slideRight 
-// export let slideLeft 
-// export function slideToTheLeft(){
-//     if(slideLeft = true){
-//     for(let i = -5; i < 0; i +0.5){
-//         this.xspeed = i;
-//         if(i =0){
-//             slideLeft = false
-//           }
-//         }    
-//     }
-// }
 
-// export function slideToTheRight(){
-//     if(slideRight = true){
-//     for(let i = 5; i > 0; i -0.5){
-//         this.xspeed = i;
-//         if(i = 0){
-//             slideRight = false
-//             }
-//         }
-//     }
-// } // kriss cross
-  
   
 
 export class Player extends PIXI.AnimatedSprite {

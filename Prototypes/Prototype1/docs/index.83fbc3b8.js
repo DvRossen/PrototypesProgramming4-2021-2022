@@ -597,7 +597,7 @@ class Game {
     }
     loadCompleted() {
         let frames = this.createPlayerFrames();
-        this.player = new (0, _player.Player)(this, frames, 800, 800);
+        this.player = new (0, _player.Player)(this, frames, 10, 10);
         this._pixi.ticker.add((delta)=>this.update(delta));
     }
     update(delta) {

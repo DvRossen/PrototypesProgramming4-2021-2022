@@ -25,7 +25,7 @@ export class Game {
 
     public loadCompleted() {
         let frames = this.createPlayerFrames()
-        this.player = new Player(this, frames, 800, 800)
+        this.player = new Player(this, frames, 10, 10)
 
         this._pixi.ticker.add((delta: number) => this.update(delta))
     }
