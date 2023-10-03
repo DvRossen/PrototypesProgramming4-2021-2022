@@ -12,7 +12,7 @@ export class Assets extends PIXI.Loader {
         super()
 
         this.assets = [
-            { name: "KnightAnimation", url: "Full_animation.json" },
+            { name: "KnightAnimation", url: "Full_Animation.json" },
         ]
 
         this.assets.forEach(asset => {
