@@ -36338,7 +36338,7 @@ class Assets extends _pixiJs.Loader {
         this.assets = [
             {
                 name: "KnightAnimation",
-                url: "Full_animation.json"
+                url: "Full_Animation.json"
             }
         ];
         this.assets.forEach((asset)=>{
