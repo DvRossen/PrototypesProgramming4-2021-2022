@@ -1,5 +1,6 @@
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
 import * as PIXI from 'pixi.js'
+import { sound } from '@pixi/sound';
 import { Game } from './game'
 
 export class Player extends PIXI.AnimatedSprite {
@@ -7,9 +8,12 @@ export class Player extends PIXI.AnimatedSprite {
     game: Game
     xspeed: number = 0
     facing: String = "left"
+    action: String = ""
+    
 
     constructor(game: Game, textures, x: number, y: number) {
         super(textures)
+        sound.add("sword_hit", "sword_hit.mp3")
         this.game = game
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
         window.addEventListener("keyup", (e: KeyboardEvent) => this.onKeyUp(e))
@@ -20,13 +24,17 @@ export class Player extends PIXI.AnimatedSprite {
         this.play();
         this.game.pixi.stage.addChild(this);
     }
+    
     public stopAction(){
             this.xspeed =0
             this.textures = this.game.PlayerIdleFrames()
-            this.play();  
+            this.play();
+            this.action = ""
     }
     
     onKeyDown(e: KeyboardEvent): void {
+        if( this.action == ""){
+        
         switch (e.key.toUpperCase()) {
             case "A":
             case "ARROWLEFT":
@@ -48,10 +56,19 @@ export class Player extends PIXI.AnimatedSprite {
                 this.play();
                 this.scale.x = -10
                 break;
+            case " ":
+                this.xspeed = 0
+                this.textures = this.game.PlayerAttackFrames()
+                this.play();
+                this.action = "attack" 
+                setTimeout(() =>{ sound.play("sword_hit") }, 300)
+                break;
+        }
         }
     }
 
   onKeyUp(e: KeyboardEvent): void {
+    if( this.action == ""){
         switch (e.key.toUpperCase()) {
             case "D":
             case "ARROWRIGHT":
@@ -73,10 +90,12 @@ export class Player extends PIXI.AnimatedSprite {
             this.scale.x = 10
                 break;
             case " ": 
+            
             if(this.currentFrame == 5){
                 this.textures = this.game.PlayerIdleFrames()
             }
              break;   
+        }
         }
  
     }

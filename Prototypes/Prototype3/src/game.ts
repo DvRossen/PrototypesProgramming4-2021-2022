@@ -1,43 +1,67 @@
 import * as PIXI from 'pixi.js'
 import { Assets } from './assets'
-import { JumpCat } from './jumpcat'
+import { Player } from './player'
 
 export class Game {
 
-    // fields
-    private jumpcat: JumpCat
+    
+    private player: Player
     private _pixi: PIXI.Application
 
-    // Properties
+    
     public get pixi(): PIXI.Application { return this._pixi }
 
     constructor() {
-        this._pixi = new PIXI.Application({ width: 800, height: 600, backgroundColor: 0x1099bb })
+        this._pixi = new PIXI.Application({ width: 1600, height: 800, backgroundColor: 0x5500DD })
         document.body.appendChild(this._pixi.view)
-
         new Assets(this)
     }
 
-    public loadCompleted() {
-        let frames = this.createCatFrames()
-        this.jumpcat = new JumpCat(this, frames, 100, 100)
-
+    public loadCompleted() { 
+        let frames = this.PlayerIdleFrames()
+        this.player = new Player(this, frames, 250, 250)
         this._pixi.ticker.add((delta: number) => this.update(delta))
     }
 
+
     private update(delta: number) {
-        this.jumpcat.update(delta)
+        this.player.x += this.player.xspeed
+        this.player.update(delta)
+        if( this.player.action == "attack"){
+        if(this.player.currentFrame == 5){
+        this.player.stopAction()
+        }
+    } 
     }
 
-    private createCatFrames() {
-        // create an array of textures from an image path
+    public PlayerIdleFrames(): PIXI.Texture[] {
+        let frames: PIXI.Texture[] = [];
 
-
-
-        // magically works since the spritesheet was loaded with the pixi loader
-
-
-
+        for (let i = 0; i <= 9; i++) {
+            frames.push(PIXI.Texture.from(`Pixel_Knight_Idle${i}.png`));
+        }
+        return frames
     }
+
+    public PlayerAttackFrames(): PIXI.Texture[] {
+        let frames: PIXI.Texture[] = [];
+      for(let i = 0 ; i <= 5; i++){
+        frames.push(PIXI.Texture.from(`Pixel_Knight_Attack${i}.png`));
+      }
+        return frames
+    }
+
+    public PlayerWalkFrames(): PIXI.Texture[] {
+        let frames: PIXI.Texture[] = [];
+
+         for (let i = 0; i <= 3; i++) {
+            frames.push(PIXI.Texture.from(`Pixel_Knight_Walk${i}.png`));
+        }
+            return frames
+        
+   
 }
+}
+
+
 

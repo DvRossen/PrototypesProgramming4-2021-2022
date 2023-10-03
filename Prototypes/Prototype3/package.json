@@ -3,13 +3,14 @@
     "version": "1.0.0",
     "description": "Dit is een startproject voor het werken met PixiJS, Typescript en OOP. Je kan deze repository downloaden en vervolgens installeren met:",
     "scripts": {
-        "start": "parcel src/index.html --dist-dir docs",
-        "build": "parcel build src/index.html --dist-dir docs --public-url ./"
+        "start": "parcel src/FullDemo.html --dist-dir docs",
+        "build": "parcel build src/FullDemo.html --dist-dir docs --public-url ./"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@pixi/sound": "^5.2.1",
         "pixi.js": "^6.3.0"
     },
     "devDependencies": {
