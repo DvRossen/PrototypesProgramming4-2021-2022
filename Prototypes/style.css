@@ -40,6 +40,11 @@ font-size: 1.5rem;
 
 a,a:visited{
     text-decoration: none;
+    color:black;
+}
+
+a:hover{
+    color:goldenrod;
 }
 
 hr{
