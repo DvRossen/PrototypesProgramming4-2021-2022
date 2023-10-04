@@ -20,7 +20,7 @@ export class Game {
 
     public loadCompleted() { 
         let frames = this.PlayerIdleFrames()
-        this.player = new Player(this, frames, 100, 100)
+        this.player = new Player(this, frames, 600, 0)
         this._pixi.ticker.add((delta: number) => this.update(delta))
     }
 

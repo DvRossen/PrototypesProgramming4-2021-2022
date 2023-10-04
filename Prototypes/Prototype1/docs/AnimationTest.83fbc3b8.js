@@ -599,7 +599,7 @@ class Game {
     }
     loadCompleted() {
         let frames = this.PlayerIdleFrames();
-        this.player = new (0, _player.Player)(this, frames, 100, 100);
+        this.player = new (0, _player.Player)(this, frames, 600, 0);
         this._pixi.ticker.add((delta)=>this.update(delta));
     }
     update(delta) {
@@ -36323,9 +36323,7 @@ var _pixiJs = require("pixi.js");
 class Assets extends _pixiJs.Loader {
     constructor(game){
         super();
-        // private game: Game
         this.assets = [];
-        // this.game = game
         this.assets = [
             {
                 name: "KnightAnimation",
